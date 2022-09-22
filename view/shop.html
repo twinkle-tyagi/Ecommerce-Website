@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-Commerce Project</title>
     <link rel="stylesheet" href="./style.css">
+    <script src="script.js" async></script>
 
 </head>
 <body>
@@ -31,7 +32,7 @@
                         <img src="panda.jpg" class="prod-images" alt="">
                     </div>
                     <div class="prod-details">
-                        <span>$ 14.99 </span>
+                        <span>$12.99 </span>
                         <button class="shop-item-button" type="button"> Add to Cart</button>
                     </div>
                 </div>
@@ -42,7 +43,7 @@
                         <img src="panda.jpg" class="prod-images" alt="">
                     </div>
                     <div class="prod-details">
-                        <span>$ 14.99 </span>
+                        <span>$10.99 </span>
                         <button class="shop-item-button" type="button"> Add to Cart</button>
                     </div>
                 </div>
@@ -53,7 +54,7 @@
                         <img src="panda.jpg" class="prod-images" alt="">
                     </div>
                     <div class="prod-details">
-                        <span>$ 14.99 </span>
+                        <span>$18.99 </span>
                         <button class="shop-item-button" type="button"> Add to Cart</button>
                     </div>
                 </div>
@@ -64,7 +65,7 @@
                         <img src="panda.jpg" class="prod-images" alt="">
                     </div>
                     <div class="prod-details">
-                        <span>$ 14.99 </span>
+                        <span>$19.99 </span>
                         <button class="shop-item-button" type="button"> Add to Cart</button>
                     </div>
                 </div>
@@ -80,7 +81,7 @@
                         <img src="panda.jpg" class="prod-images" alt="">
                     </div>
                     <div class="prod-details">
-                        <span> $ 120 </span>
+                        <span> $120 </span>
                         <button class="shop-item-button" type="button"> Add to Cart </button>
                     </div>
                 </div>
@@ -91,7 +92,7 @@
                         <img src="panda.jpg" alt="" class="prod-images">
                     </div>
                     <div>
-                        <span>$ 150</span>
+                        <span>$150</span>
                         <button class="shop-item-button"> Add to Cart</button>
                     </div>
                 </div>
@@ -105,13 +106,28 @@
             <div class="cart-row">
                 <span class="cart-item cart-column"> ITEM </span>
                 <span class="cart-price cart-column"> PRICE </span>
-                <span class="cart-quantity cart-column"> QUANTITY </span>
+                <span class="cart-quantity cart-column" name="cart-quantity"> QUANTITY </span>
             </div>
-            <div>
-                <span class="total-title"> TOTAL </span>
-                <span id="total-value"> 0 </span>
+            <div class="cart-items">
+<!--
+                <div class="cart-row">
+                    <span class='cart-item cart-column'>
+                        <img class='cart-img' src="panda.jpg" alt="" width="100" height="100">
+                        <span class="cart-item-title">T-Shirt</span>
+                    </span>
+                    <span class='cart-price cart-column'>$19.99</span>
+                    <span class='cart-quantity cart-column'>
+                        <input class="cart-quantity-input" type="number" value="1">
+                        <button class="btn btn-danger" type="button">REMOVE</button>
+                    </span>
+                </div>
+-->
             </div>
-            <button class="purchase-button" type="button"> PURCHASE </button>
+            <div class="cart-total">
+                <span class="total-title"> Total </span>
+                $<span id="total-value">0</span>
+            </div>
+            <button class="btn btn-primary purchase-button" type="button"> PURCHASE </button>
         </section>
         <button class="cart-button-add"> <a href="#cart" class="cart-button"> GO TO CART </a></button>
     </div>

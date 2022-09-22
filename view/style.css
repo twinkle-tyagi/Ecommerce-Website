@@ -94,6 +94,7 @@ span {
     height: 400px;
     width: 400px;
     overflow: hidden;
+    margin: 10px;
 }
 
 .prod-images {
@@ -121,8 +122,8 @@ span {
 #cart {
     margin: 0px;
     background-color: aliceblue;
-    position: absolute;
-    display: inline;
+    position:absolute;
+    width: 400px;
     top: 50px;
     right: 0;
     cursor: pointer;
@@ -131,6 +132,7 @@ span {
     transform: translateX(100%);
 }
 
+/*
 #cart:active {
     position: fixed;
     height: 95%;
@@ -139,14 +141,16 @@ span {
     position: fixed;
     transform: translateX(0%);
 }
+*/
 
 #cart h2{
     margin: 20px 0px;
     padding: 0;
 }
 
-.cart-item {
-    width: 45px;
+#cart .cart-item {
+    display:flex;
+    width: 65px;
 }
 
 .cart-price {
@@ -155,6 +159,21 @@ span {
 
 .cart-quantity {
     width: 50px;
+}
+
+.cart-quantity input {
+    width: 30px;
+    height: 30px;
+    border: 1px solid ;
+    outline: none;
+    text-align: center;
+}
+
+.cart-quantity button {
+    height: 30px;
+    outline: none;
+    padding: 0px 7px;
+    margin: 20px;
 }
 
 .cart-row {
@@ -169,6 +188,13 @@ span {
     margin-right: 1.5rem;
     padding-bottom: 10px;
     margin-top: 10px;
+    margin-left: 10px;
+}
+
+.cart-img {
+    width: 80%;
+    border-radius: 8px;
+    margin-right: 20px;
 }
 
 .purchase-button {
@@ -179,6 +205,8 @@ span {
     margin-top: 50px;
     padding: 12px;
     height: 40px;
+    margin-bottom: 20px;
+    background-color: red;
 }
 
 .cancel {
@@ -196,7 +224,11 @@ span {
 .cart-total {
     display: flex;
     margin: 20px;
-    flex-direction: row-reverse;
+}
+
+.cart-total .total-title {
+    margin-right: 10px;
+    font-size: 22px;
 }
 
 footer {
@@ -314,4 +346,16 @@ header .play-btn {
     font-size: 17px;
     margin: 20px;
     color:grey;
+}
+
+.notify {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background-color: blue;
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+    padding: 2rem;
+    margin: 2rem;
 }
