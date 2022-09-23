@@ -19,9 +19,11 @@
 }
 */
 
+//const { default: axios } = require("axios");
+//const res = require("express/lib/response");
+
 // if page is loaded before JS then its okay, but if page is loaded slow and loaded after JS then, JS will execute all its code and will not find any element and would give error
 // so we need to check if page is loading or done loading
-
 
 
 if(document.readyState == 'loading') {
@@ -32,6 +34,16 @@ else {
 }
 
 function ready () {
+
+    axios.get('http://localhost:3000/getProducts')
+    .then(res => {
+        console.log(res);
+        for(var i =0; i< res.data.length; i++) {
+            addItemToCart(res.data[i].title, res.data[i].price, res.data[i].imgSrc);
+        }
+        updateCartTotal();
+    })
+    .catch(err => console.log(err));
     
     var removeItems = document.getElementsByClassName('btn-danger');
 
@@ -78,9 +90,22 @@ function addToCartClicked(event) {
     var imgSrc = shopItem.getElementsByTagName('img')[0].src;
     console.log(imgSrc);
 
-    addItemToCart(title, price, imgSrc); // to add row to cart.
-    updateCartTotal();  // to update total when item added
-    showNotification(title);
+    var p1 = parseFloat(price.replace('$',''));
+
+    var obj = {
+        title: title,
+        imgUrl: imgSrc,
+        price: p1
+    }
+    
+    axios.post('http://localhost:3000/addToCart', obj)
+    .then (res => {
+        addItemToCart(title, price, imgSrc); // to add row to cart.
+        updateCartTotal();  // to update total when item added
+        showNotification(title);
+    })
+    .catch();
+    
 }
 
 function addItemToCart(title, price, imgSrc) {
