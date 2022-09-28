@@ -12,7 +12,9 @@ router.post('/addToCart', eCommController.postAddToCart);
 
 router.get('/getProducts', eCommController.getProducts);
 
-//router.get('/', eCommController.getProducts);
+router.post('/postUpdateQty', eCommController.postUpdateQty);
+
+router.get('/', eCommController.getProducts);
 
 
 module.exports = router;
