@@ -96,16 +96,25 @@ function ready () {
         button.addEventListener('click', addToCartClicked);
     } 
     */
-    document.getElementsByClassName('purchase-button')[0].addEventListener('click', purchaseClicked);
+
+    //console.log(document.getElementsByClassName('purchase-button'));
+    if(document.getElementsByClassName('purchase-button')[0]) {
+        document.getElementsByClassName('purchase-button')[0].addEventListener('click', purchaseClicked);
+    }
+    
 
 //to disapper cart when we click X
-    document.getElementsByClassName('cancel')[0].addEventListener('click', () => {
-        document.getElementById('cart').style = 'display:none';
-    });
-
-    document.getElementsByClassName('cart-holder')[0].addEventListener('click', () => {
-        document.getElementById('cart').style = 'display:inline';
-    })
+    if(document.getElementsByClassName('cancel')[0]) {
+        document.getElementsByClassName('cancel')[0].addEventListener('click', () => {
+            document.getElementById('cart').style = 'display:none';
+        });
+    }
+    
+    if(document.getElementsByClassName('cart-holder')[0]) {
+        document.getElementsByClassName('cart-holder')[0].addEventListener('click', () => {
+            document.getElementById('cart').style = 'display:inline';
+        })
+    }
 }
 
 function addProductToShop(product) {
@@ -263,14 +272,21 @@ function updateCartTotal() {
     document.getElementsByClassName('cart-total')[0].innerHTML = '$' + total;
 }
 
-function  purchaseClicked() {
-    alert('Thanks for purchase');
-// when we purchase, cart gets empty, so we will remove the parent of cart-item
-    var cartItems = document.getElementsByClassName('cart-items')[0];
-    while(cartItems.hasChildNodes()) {
-        cartItems.removeChild(cartItems.firstChild);    //loop through all the items and remove them using firstChild.
-    }
-    updateCartTotal();
+function purchaseClicked() {
+
+    axios.post('http://localhost:3000/create-order')
+    .then( res => {
+        alert('Thanks for purchase');
+        // when we purchase, cart gets empty, so we will remove the parent of cart-item
+            var cartItems = document.getElementsByClassName('cart-items')[0];
+            cartItems.innerHTML = "";
+            //while(cartItems.hasChildNodes()) {
+              //  cartItems.removeChild(cartItems.firstChild);    //loop through all the items and remove them using firstChild.
+           // }
+        updateCartTotal();
+    })
+    .catch(err => console.log(err));
+
 }
 
 function showNotification(title) {
@@ -386,7 +402,9 @@ function getCarts(page) {
             for(var i=0; i<res.data.products.length; i++) {
                 addItemToCart(res.data.products[i]);
             }
-            
+
         })
         .catch(err => console.log(err));
 }
+
+
