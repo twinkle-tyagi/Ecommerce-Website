@@ -88,6 +88,8 @@ section {
 
 span {
     float: left;
+    display: flex;
+    margin-left: 10px;
 }
 
 .img-container {
